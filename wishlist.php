@@ -99,7 +99,7 @@ if(isset($_GET['delete_all'])){
    <form action="" method="POST" class="box">
       <a href="wishlist.php?delete=<?= $fetch_wishlist['id']; ?>" class="fas fa-times" onclick="return confirm('delete this from wishlist?');"></a>
       <a href="view_page.php?pid=<?= $fetch_wishlist['pid']; ?>" class="fas fa-eye"></a>
-      <img src="uploaded_img/<?= $fetch_wishlist['image']; ?>" alt="">
+      <img src="uploaded_img/<?= $fetch_wishlist['image']; ?>" alt="" height="200px">
       <div class="name"><?= $fetch_wishlist['name']; ?></div>
       <div class="price">Rs<?= $fetch_wishlist['price']; ?>/-</div>
       <input type="number" min="1" value="1" class="qty" name="p_qty">

@@ -132,7 +132,7 @@ if(isset($_GET['delete'])){
    ?>
    <div class="box">
       <div class="price">Rs.<?= $fetch_products['price']; ?>/-</div>
-      <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
+      <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="" height="200px">
       <div class="name"><?= $fetch_products['name']; ?></div>
       <div class="cat"><?= $fetch_products['category']; ?></div>
       <div class="details"><?= $fetch_products['details']; ?></div>
