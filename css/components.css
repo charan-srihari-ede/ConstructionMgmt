@@ -248,7 +248,7 @@ section{
 }
 
 .header .flex .navbar a{
-   margin:0 1rem;
+   margin:0 1pc;
    font-size: 2rem;
    color:var(--light-color);
 }
@@ -366,19 +366,7 @@ section{
    margin:1rem 0;
    background-color: var(--light-bg);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* }
 .footer{
    background-color: var(--white);
 }
@@ -429,7 +417,7 @@ section{
 
 .footer .credit span{
    color:var(--green);
-}
+} */
 
 
 

@@ -101,7 +101,8 @@ if(isset($_POST['add_to_cart'])){
 
       <div class="content">
          <!-- <span>don't panic, go organic</span> -->
-         <h3>CONSTRUCTION MANAGEMENT SYSTEM</h3>
+   
+         <h3 style="background-color:black;">CONSTRUCTION MANAGEMENT SYSTEM</h3>
          <!-- <a href="about.php" class="btn">about us</a><br><br><br> -->
          <!-- <marquee><h3><span>FREE DELIVERY ON ALL TYPES OF PRODUCTS TO YOUR DOOR STEP</span></h3></marquee>  -->
       </div>

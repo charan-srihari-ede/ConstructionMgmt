@@ -7,38 +7,41 @@
 }
 
 .home-bg .home{
-   display: flex;
    align-items: center;
-   min-height: 60vh;
+   height: 54vh;
+   vertical-align: middle;
+   width: fit-content;
+   display: flex;
 }
 
-.home-bg .home .content{
+/* .home-bg .home .content{
    width: 100rem;
-}
+} */
 
-.home-bg .home .content span{
+/* .home-bg .home .content span{
    color:var(--orange);
    font-size: 2.5rem;
-}
+} */
 
 .home-bg .home .content h3{
-   font-size: 3rem;
+   font-size: 4rem;
    text-transform: uppercase;
    margin-top: 1.5rem;
    color:white;
+   
 }
 
-.home-bg .home .content p{
+/* .home-bg .home .content p{
    font-size: 1.6rem;
    padding:1rem 0;
    line-height: 2;
    color:var(--light-color);
-}
-
+} */
+/* 
 .home-bg .home .content a{
    display: inline-block;
    width: auto;
-}
+} */
 
 .home-category .box-container{
    display: grid;

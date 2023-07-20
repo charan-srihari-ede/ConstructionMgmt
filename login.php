@@ -55,13 +55,14 @@ if(isset($_POST['submit'])){
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/components.css">
+   </head>
    <body style=" background-image: url(images/home-bg.jpg);
-   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;">
-</head>
+                  background-repeat: no-repeat;
+                  background-attachment: fixed;
+                  background-size: 100% 100%;">
 
-<h1 align="center"><marquee>CONSTRUCTION MANAGEMENT SYSTEM</marquee><h1>
+
+<h1><marquee>CONSTRUCTION MANAGEMENT SYSTEM</marquee><h1>
 
 <?php
 
