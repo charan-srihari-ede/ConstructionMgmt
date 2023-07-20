@@ -20,8 +20,8 @@
 
       <div class="box">
          <h3>contact info</h3>
-         <p> <i class="fas fa-phone"></i> 7396362825 </p>
-         <p> <i class="fas fa-phone"></i> 9440787584 </p>
+         <!-- <p> <i class="fas fa-phone"></i> 7396362825 </p>
+         <p> <i class="fas fa-phone"></i> 9440787584 </p> -->
          <p> <i class="fas fa-envelope"></i> vignan@gmail.com </p>
          <p> <i class="fas fa-map-marker-alt"></i> VADLAMUDI Guntur ANDHRA PRADESH</p>
       </div>
@@ -35,7 +35,7 @@
       </div>
 
    </section>
-<marquee><h1><mark>FREE DELIVERY ON ALL TYPES OF PRODUCTS TO YOUR DOOR STEP</mark><h1></marquee>
-   <p class="credit"> &copy; copyright @ <?= date('Y'); ?> by <span>201FA04002,201FA04035,201FA04066</span> | all rights reserved! </p>
+<!-- <marquee><h1><mark>FREE DELIVERY ON ALL TYPES OF PRODUCTS TO YOUR DOOR STEP</mark><h1></marquee> -->
+   <!-- <p class="credit"> &copy; copyright @ <?= date('Y'); ?> by <span>201FA04002,201FA04035,201FA04066</span> | all rights reserved! </p> -->
 
 </footer>

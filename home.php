@@ -100,10 +100,10 @@ if(isset($_POST['add_to_cart'])){
    <section class="home">
 
       <div class="content">
-         <span>don't panic, go organic</span>
-         <h3>ONLINE GROCERY MANAGEMENT SYSTEM</h3>
-         <a href="about.php" class="btn">about us</a><br><br><br>
-         <marquee><h3><span>FREE DELIVERY ON ALL TYPES OF PRODUCTS TO YOUR DOOR STEP</span></h3></marquee> 
+         <!-- <span>don't panic, go organic</span> -->
+         <h3>CONSTRUCTION MANAGEMENT SYSTEM</h3>
+         <!-- <a href="about.php" class="btn">about us</a><br><br><br> -->
+         <!-- <marquee><h3><span>FREE DELIVERY ON ALL TYPES OF PRODUCTS TO YOUR DOOR STEP</span></h3></marquee>  -->
       </div>
 
    </section>
@@ -112,37 +112,45 @@ if(isset($_POST['add_to_cart'])){
 
 <section class="home-category">
 
-   <h1 class="title">shop by category</h1>
+   <h1 class="title">raise Request by category</h1>
 
    <div class="box-container">
 
       <div class="box">
-         <img src="images/cat-1.png" alt="">
-         <h3>fruits</h3>
+         <img src="images/th.jpeg" alt="">
+         <h3>Structural</h3>
          <p></p>
-         <a href="category.php?category=fruits" class="btn">fruits</a>
+         <a href="category.php?category=structural" class="btn">Structural</a>
       </div>
 
       <div class="box">
-         <img src="images/cat-2.png" alt="">
-         <h3>meat</h3>
+         <img src="images/roof.jpeg" alt="">
+         <h3>Roofing</h3>
          <p></p>
-         <a href="category.php?category=meat" class="btn">meat</a>
+         <a href="category.php?category=roofing" class="btn">Roofing</a>
       </div>
 
       <div class="box">
-         <img src="images/cat-3.png" alt="">
-         <h3>vegitables</h3>
+         <img src="images/paint.jpeg" alt="">
+         <h3>exterior</h3>
          <p></p>
-         <a href="category.php?category=vegitables" class="btn">vegitables</a>
+         <a href="category.php?category=exterior" class="btn">Exterior</a>
       </div>
 
       <div class="box">
-         <img src="images/chocolates.png" alt="">
-         <h3>chocolates</h3>
+         <img src="images/inte.jpeg" alt="">
+         <h3>Interior</h3>
          <p></p>
-         <a href="category.php?category=fish" class="btn">chocolates</a>
+         <a href="category.php?category=interior" class="btn">Interior</a>
       </div>
+
+      <!-- <div class="box">
+         <img src="images/tmt-bar-design.jpg" alt="">
+         <h3>Finishing</h3>
+         <p></p>
+         <a href="category.php?category=finishing" class="btn">Finishing</a>
+      </div> -->
+
 
    </div>
 

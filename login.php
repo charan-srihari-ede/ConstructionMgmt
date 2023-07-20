@@ -55,10 +55,10 @@ if(isset($_POST['submit'])){
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/components.css">
-
+   <body background="C:\xampp\htdocs\grocery store\images\home-bg.jpg">
 </head>
-<body background="C:\xampp\htdocs\grocery store\images\home-bg.jpg">
-<h1 align="center"><marquee>ONLINE GROCERY MANAGEMENT SYSTEM</marquee><h1>
+
+<h1 align="center"><marquee>CONSTRUCTION MANAGEMENT SYSTEM</marquee><h1>
 
 <?php
 
@@ -82,13 +82,7 @@ if(isset($message)){
       <input type="email" name="email" class="box" placeholder="enter your email" required>
       <input type="password" name="pass" class="box" placeholder="enter your password" required>
       <input type="submit" value="login now" class="btn" name="submit">
-      <p>don't have an account? <a href="register.php">register now</a></p>
-   </form>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-   <form action="" method="POST">
-      <h3>ADMIN login now</h3>
-      <input type="email" name="email" class="box" placeholder="enter your email" required>
-      <input type="password" name="pass" class="box" placeholder="enter your password" required>
-      <input type="submit" value="ADMIN LOGIN" class="btn" name="submit">
+      <!-- <p>don't have an account? <a href="register.php">register now</a></p> -->
    </form>
 
 </section>

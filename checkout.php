@@ -137,11 +137,11 @@ if(isset($_POST['order'])){
          </div>
          <div class="inputBox">
             <span>city :</span>
-            <input type="text" name="city" placeholder="e.g. mumbai" class="box" required>
+            <input type="text" name="city" placeholder="e.g. Guntur" class="box"  required>
          </div>
          <div class="inputBox">
             <span>state :</span>
-            <input type="text" name="state" placeholder="e.g. maharashtra" class="box" required>
+            <input type="text" name="state" placeholder="e.g. Andhra Pradesh" class="box" required>
          </div>
          <div class="inputBox">
             <span>country :</span>

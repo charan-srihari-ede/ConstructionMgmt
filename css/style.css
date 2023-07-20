@@ -1,7 +1,7 @@
 @import url('components.css');
 
 .home-bg{
-   background: url(../images/cat-1.png) no-repeat;
+   background: url(../images/home-bg.jpg) no-repeat;
    background-size: cover;
    background-position: center;
 }
@@ -13,7 +13,7 @@
 }
 
 .home-bg .home .content{
-   width: 50rem;
+   width: 100rem;
 }
 
 .home-bg .home .content span{
@@ -25,7 +25,7 @@
    font-size: 3rem;
    text-transform: uppercase;
    margin-top: 1.5rem;
-   color:var(--black);
+   color:white;
 }
 
 .home-bg .home .content p{
@@ -46,6 +46,7 @@
    gap:1.5rem;
    justify-content: center;
    align-items: flex-start;
+   grid-template-rows: repeat(100rem,100rem);
 }
 
 .home-category .box-container .box{

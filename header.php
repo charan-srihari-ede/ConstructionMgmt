@@ -16,8 +16,12 @@ if(isset($message)){
 <header class="header">
 
    <div class="flex">
-
-      <a href="admin_page.php" class="logo">FRIENDS GROCERY MART<span>.</span></a>
+      <span class="logo" >
+         <img src="vuu.png" width="7%" height="7%"/> &emsp;
+         <h3>VIGNAN'S GROUP</h3> 
+         
+         
+</span>
 
       <nav class="navbar">
          <a href="home.php">home</a>
@@ -29,7 +33,6 @@ if(isset($message)){
 
       <div class="icons">
          <div id="menu-btn" class="fas fa-bars"></div>
-         <div id="user-btn" class="fas fa-user"></div>
          <a href="search_page.php" class="fas fa-search"></a>
          <?php
             $count_cart_items = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
@@ -39,6 +42,7 @@ if(isset($message)){
          ?>
          <a href="wishlist.php"><i class="fas fa-heart"></i><span>(<?= $count_wishlist_items->rowCount(); ?>)</span></a>
          <a href="cart.php"><i class="fas fa-shopping-cart"></i><span>(<?= $count_cart_items->rowCount(); ?>)</span></a>
+         <div id="user-btn" class="fas fa-user"></div>
       </div>
 
       <div class="profile">
