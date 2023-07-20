@@ -117,28 +117,28 @@ if(isset($_POST['add_to_cart'])){
    <div class="box-container">
 
       <div class="box">
-         <img src="images/th.jpeg" alt="">
+         <img src="images/th.jpeg" alt="Structural" height="150px" >
          <h3>Structural</h3>
          <p></p>
          <a href="category.php?category=structural" class="btn">Structural</a>
       </div>
 
       <div class="box">
-         <img src="images/roof.jpeg" alt="">
+         <img src="images/roof.jpeg" alt="Roofing" height="150px"  >
          <h3>Roofing</h3>
          <p></p>
          <a href="category.php?category=roofing" class="btn">Roofing</a>
       </div>
 
       <div class="box">
-         <img src="images/paint.jpeg" alt="">
-         <h3>exterior</h3>
+         <img src="images/paint.jpeg" alt="Exterior" height="150px" >
+         <h3>Exterior</h3>
          <p></p>
          <a href="category.php?category=exterior" class="btn">Exterior</a>
       </div>
 
       <div class="box">
-         <img src="images/inte.jpeg" alt="">
+         <img src="images/inte.jpeg" alt="Interior" height="150px" >
          <h3>Interior</h3>
          <p></p>
          <a href="category.php?category=interior" class="btn">Interior</a>
