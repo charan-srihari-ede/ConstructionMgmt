@@ -483,3 +483,9 @@ section{
    }
    
 }
+.header .flex .navbar a.active{
+   color:green;
+   font: bolder;
+   text-decoration-line: underline;
+   font-weight: bolder;
+}
