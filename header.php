@@ -33,15 +33,15 @@ if(isset($message)){
 
       <div class="icons">
          <div id="menu-btn" class="fas fa-bars"></div>
-         <a href="search_page.php" class="fas fa-search"></a>
+         <a href="search_page.php" class="fas fa-search" data-page="search"></a>
          <?php
             $count_cart_items = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
             $count_cart_items->execute([$user_id]);
             $count_wishlist_items = $conn->prepare("SELECT * FROM `wishlist` WHERE user_id = ?");
             $count_wishlist_items->execute([$user_id]);
          ?>
-         <a href="wishlist.php"><i class="fas fa-heart"></i><span>(<?= $count_wishlist_items->rowCount(); ?>)</span></a>
-         <a href="cart.php"><i class="fas fa-shopping-cart"></i><span>(<?= $count_cart_items->rowCount(); ?>)</span></a>
+         <a href="wishlist.php" class="fas fa-heart" data-page="wishlist"><span>(<?= $count_wishlist_items->rowCount(); ?>)</span></a>
+         <a href="cart.php" class="fas fa-shopping-cart" data-page="cart"><span>(<?= $count_cart_items->rowCount(); ?>)</span></a>
          <div id="user-btn" class="fas fa-user"></div>
       </div>
 
@@ -67,35 +67,46 @@ if(isset($message)){
 <!-- Your existing HTML content -->
 <boby>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const navbarLinks = document.querySelectorAll(".navbar a");
+   document.addEventListener("DOMContentLoaded", function () {
+      const navbarLinks = document.querySelectorAll(".navbar a");
+      const iconsLinks = document.querySelectorAll(".icons a"); // Select the anchor tags inside the icons div
 
-    // Function to add "active" class to the clicked page's link
-    function setActiveLink() {
-      const currentPath = window.location.pathname;
+      // Function to add "active" class to the clicked page's link
+      function setActiveLink() {
+         const currentPath = window.location.pathname;
+         navbarLinks.forEach((link) => {
+            const linkPath = link.getAttribute("href");
+            if (currentPath.includes(linkPath)) {
+               link.classList.add("active");
+            } else {
+               link.classList.remove("active");
+            }
+         });
+
+         // Check iconsLinks and add "active" class to the clicked link
+         iconsLinks.forEach((link) => {
+            const linkPath = link.getAttribute("href");
+            if (currentPath.includes(linkPath)) {
+               link.classList.add("active");
+            } else {
+               link.classList.remove("active");
+            }
+         });
+      }
+
+      // Set initial "active" class when the page loads
+      setActiveLink();
+
+      // Add event listeners to each link for handling clicks
       navbarLinks.forEach((link) => {
-        const linkPath = link.getAttribute("href");
-        if (currentPath.includes(linkPath)) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active");
-        }
+         link.addEventListener("click", () => {
+            // Remove "active" class from all links
+            navbarLinks.forEach((link) => link.classList.remove("active"));
+            // Add "active" class to the clicked link
+            link.classList.add("active");
+         });
       });
-    }
-
-    // Set initial "active" class when the page loads
-    setActiveLink();
-
-    // Add event listeners to each link for handling clicks
-    navbarLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        // Remove "active" class from all links
-        navbarLinks.forEach((link) => link.classList.remove("active"));
-        // Add "active" class to the clicked link
-        link.classList.add("active");
-      });
-    });
-  });
+   });
 </script>
 </body>
 
