@@ -87,7 +87,7 @@ if(!isset($admin_id)){
       <a href="admin_products.php" class="btn">see products</a>
       </div>
 
-      <div class="box">
+      <!-- <div class="box">
       <?php
          $select_users = $conn->prepare("SELECT * FROM `users` WHERE user_type = ?");
          $select_users->execute(['user']);
@@ -96,9 +96,9 @@ if(!isset($admin_id)){
       <h3><?= $number_of_users; ?></h3>
       <p>total users</p>
       <a href="admin_users.php" class="btn">see accounts</a>
-      </div>
+      </div> -->
 
-      <div class="box">
+      <!-- <div class="box">
       <?php
          $select_admins = $conn->prepare("SELECT * FROM `users` WHERE user_type = ?");
          $select_admins->execute(['admin']);
@@ -107,7 +107,7 @@ if(!isset($admin_id)){
       <h3><?= $number_of_admins; ?></h3>
       <p>total admins</p>
       <a href="admin_users.php" class="btn">see accounts</a>
-      </div>
+      </div> -->
 
       <div class="box">
       <?php
@@ -130,6 +130,59 @@ if(!isset($admin_id)){
       <p>total messages</p>
       <a href="admin_contacts.php" class="btn">see messages</a>
       </div>
+      <div class="box">
+      <!-- <?php
+         $select_admins = $conn->prepare("SELECT * FROM `users` WHERE user_type = ?");
+         $select_admins->execute(['admin']);
+         $number_of_admins = $select_admins->rowCount();
+      ?>
+      <h3><?= $number_of_admins; ?></h3>
+      <p>total admins</p> -->
+      <h3>select range</h3>
+      <form method="POST" action="">
+    <input type="date" style="border: 2px solid black; padding: 1%; margin: 1%" name="date1">
+    <input type="date" style="border: 2px solid black; padding: 1%; margin: 1%" name="date2">
+    <input type="submit" class="btn" name="submit">
+</form>
+</div>
+
+<?php
+if (isset($_POST['submit'])) {
+    $start_date = $_POST['date1'];
+    $end_date = $_POST['date2'];
+
+    // Assuming you have already created a PDO connection
+    try {
+        $sql = "SELECT * FROM `orders` WHERE placed_on BETWEEN :start_date AND :end_date";
+        $stmt = $conn->prepare($sql);
+
+        // Bind the parameters to the statement
+        $stmt->bindParam(':start_date', $start_date, PDO::PARAM_STR);
+        $stmt->bindParam(':end_date', $end_date, PDO::PARAM_STR);
+
+        // Execute the query
+        $stmt->execute();
+
+        // Fetch all the rows into an associative array
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Check if any rows were returned
+        if (count($result) > 0) {
+            // Loop through the result set and process each row
+            foreach ($result as $row) {
+                // Access the data in the row
+                // Example: $row["column_name"]
+                // Replace "column_name" with the actual column names from your table
+                echo $row['user_id'] . ':' . $row['total_price'] . '<br>';
+            }
+        } else {
+            echo "No records found between $start_date and $end_date";
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+?>
 
    </div>
 

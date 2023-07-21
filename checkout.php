@@ -22,7 +22,7 @@ if(isset($_POST['order'])){
    $method = filter_var($method, FILTER_SANITIZE_STRING);
    $address = 'flat no. '. $_POST['flat'] .' '. $_POST['street'] .' '. $_POST['city'] .' '. $_POST['state'] .' '. $_POST['country'] .' - '. $_POST['pin_code'];
    $address = filter_var($address, FILTER_SANITIZE_STRING);
-   $placed_on = date('d-M-Y');
+   $placed_on = date('Y-m-d');
 
    $cart_total = 0;
    $cart_products[] = '';

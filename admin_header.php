@@ -20,11 +20,11 @@ if(isset($message)){
       <a href="admin_page.php" class="logo">Admin<span>Panel</span></a>
 
       <nav class="navbar">
-         <a href="admin_page.php">home</a>
-         <a href="admin_products.php">products</a>
-         <a href="admin_orders.php">orders</a>
-         <a href="admin_users.php">users</a>
-         <a href="admin_contacts.php">messages</a>
+         <a href="admin_page.php" data-page="home">home</a>
+         <a href="admin_products.php"data-page="products">products</a>
+         <a href="admin_orders.php" data-page="orders">orders</a>
+         <a href="admin_users.php" data-page="users">users</a>
+         <a href="admin_contacts.php" data-page="messages">messages</a>
       </nav>
 
       <div class="icons">
@@ -51,3 +51,47 @@ if(isset($message)){
    </div>
 
 </header>
+<body>
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+      const navbarLinks = document.querySelectorAll(".navbar a");
+      const iconsLinks = document.querySelectorAll(".icons a"); // Select the anchor tags inside the icons div
+
+      // Function to add "active" class to the clicked page's link
+      function setActiveLink() {
+         const currentPath = window.location.pathname;
+         navbarLinks.forEach((link) => {
+            const linkPath = link.getAttribute("href");
+            if (currentPath.includes(linkPath)) {
+               link.classList.add("active");
+            } else {
+               link.classList.remove("active");
+            }
+         });
+
+         // Check iconsLinks and add "active" class to the clicked link
+         iconsLinks.forEach((link) => {
+            const linkPath = link.getAttribute("href");
+            if (currentPath.includes(linkPath)) {
+               link.classList.add("active");
+            } else {
+               link.classList.remove("active");
+            }
+         });
+      }
+
+      // Set initial "active" class when the page loads
+      setActiveLink();
+
+      // Add event listeners to each link for handling clicks
+      navbarLinks.forEach((link) => {
+         link.addEventListener("click", () => {
+            // Remove "active" class from all links
+            navbarLinks.forEach((link) => link.classList.remove("active"));
+            // Add "active" class to the clicked link
+            link.classList.add("active");
+         });
+      });
+   });
+</script>
+</body>

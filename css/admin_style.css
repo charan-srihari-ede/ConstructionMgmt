@@ -191,7 +191,7 @@
 }
 
 .user-accounts .box-container{
-   display: grid;
+   display: flex;
    grid-template-columns: repeat(auto-fit, 33rem);
    gap:1.5rem;
    align-items: flex-start;
@@ -199,6 +199,7 @@
 }
 
 .user-accounts .box-container .box{
+   flex: 1;
    border:var(--border);
    box-shadow: var(--box-shadow);
    background-color: var(--white);
