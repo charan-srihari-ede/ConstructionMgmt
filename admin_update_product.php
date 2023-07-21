@@ -125,7 +125,7 @@ if(isset($_POST['update_product'])){
 
 
 
-<script src="js/script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

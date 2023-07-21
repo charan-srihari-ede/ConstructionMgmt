@@ -108,7 +108,7 @@ if(isset($_GET['delete'])){
 
 
 
-<script src="js/script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

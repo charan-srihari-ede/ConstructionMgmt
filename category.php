@@ -138,9 +138,9 @@ if(isset($_POST['add_to_cart'])){
 
 
 
-<?php include 'footer.php'; ?>
+<!-- <?php include 'footer.php'; ?> -->
 
-<script src="js/script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

@@ -36,6 +36,6 @@
 
    </section>
 <marquee><h1><mark>FREE DELIVERY ON ALL TYPES OF PRODUCTS TO YOUR DOOR STEP</mark><h1></marquee> -->
-   <!-- <!-- <p class="credit"> &copy; copyright @ <?= date('Y'); ?> by <span>201FA04002,201FA04035,201FA04066</span> | all rights reserved! </p> -->
+   <!-- <p class="credit"> &copy; copyright @ <?= date('Y'); ?> by <span>201FA04002,201FA04035,201FA04066</span> | all rights reserved! </p> 
 
-</footer> -->
+</footer>-->

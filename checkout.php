@@ -167,7 +167,7 @@ if(isset($_POST['order'])){
 
 <?php include 'footer.php'; ?>
 
-<script src="js/script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
