@@ -18,6 +18,8 @@ if(isset($_POST['add_product'])){
    $price = filter_var($price, FILTER_SANITIZE_STRING);
    $category = $_POST['category'];
    $category = filter_var($category, FILTER_SANITIZE_STRING);
+   $quantity = $_POST['quantity'];
+   $quantity = filter_var($quantity, FILTER_SANITIZE_STRING);
    $details = $_POST['details'];
    $details = filter_var($details, FILTER_SANITIZE_STRING);
 
@@ -34,8 +36,8 @@ if(isset($_POST['add_product'])){
       $message[] = 'product name already exist!';
    }else{
 
-      $insert_products = $conn->prepare("INSERT INTO `products`(name, category, details, price, image) VALUES(?,?,?,?,?)");
-      $insert_products->execute([$name, $category, $details, $price, $image]);
+      $insert_products = $conn->prepare("INSERT INTO `products`(name, category,quantity, details, price, image) VALUES(?,?,?,?,?,?)");
+      $insert_products->execute([$name, $category, $quantity, $details, $price, $image]);
 
       if($insert_products){
          if($image_size > 10000000){
@@ -105,7 +107,8 @@ if(isset($_GET['delete'])){
                <option value="exterior">Exterior</option>
                <option value="interior">Interior</option>
                <!-- <option value="finishing">Finishing</option> -->
-         </select>
+            </select>
+            <input type="number" name="quantity" required class="box" placeholder="enter quaintity">
          </div>
          <div class="inputBox">
          <input type="number" min="0" name="price" class="box" required placeholder="enter product price">

@@ -167,6 +167,7 @@
    background-color: var(--white);
    border-radius: .5rem;
    padding:2rem;
+   height: 100%;
 }
 
 .placed-orders .box-container .box p{
