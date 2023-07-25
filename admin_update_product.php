@@ -92,18 +92,17 @@ if(isset($_POST['update_product'])){
    <form action="" method="post" enctype="multipart/form-data">
       <input type="hidden" name="old_image" value="<?= $fetch_products['image']; ?>">
       <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
-      <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
-      <span><label>Quantity Available : </label></span>
-      <span><input type="number" name="quantity_present" min="0" readonly value="<?= $fetch_products['quantity']; ?>" class="box"></span>
+      <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt=""><br>
+      <input type="hidden" name="quantity_present" min="0" readonly value="<?= $fetch_products['quantity']; ?>" class="box">
       <input type="text" name="name" placeholder="enter product name" required class="box" value="<?= $fetch_products['name']; ?>">
       <input type="number" name="price" min="0" placeholder="enter product price" required class="box" value="<?= $fetch_products['price']; ?>">
-      <input type="number" name="quantity" min="0" placeholder="enter quantity to update" required class="box">
+      <input type="number" name="quantity" min="0" placeholder="enter quantity to update, Available: <?= $fetch_products['quantity']; ?>" required class="box">
       <select name="category" class="box" required>
          <option selected><?= $fetch_products['category']; ?></option>
-         <option value="vegitables">vegitables</option>
-         <option value="fruits">fruits</option>
-         <option value="meat">meat</option>
-         <option value="fish">fish</option>
+         <option value="structural">Structural</option>
+         <option value="roofing">Roofing</option>
+         <option value="exterior">Exterior</option>
+         <option value="interior">Interior</option>
       </select>
       <textarea name="details" required placeholder="enter product details" class="box" cols="30" rows="10"><?= $fetch_products['details']; ?></textarea>
       <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png">
