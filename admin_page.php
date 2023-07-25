@@ -139,7 +139,7 @@ if(!isset($admin_id)){
       <h3><?= $number_of_admins; ?></h3>
       <p>total admins</p> -->
       <h3>select range</h3>
-      <form method="POST" action="">
+      <form method="POST" action="report.php">
     <input type="date" style="border: 2px solid black; padding: 1%; margin: 1%" name="date1">
     <input type="date" style="border: 2px solid black; padding: 1%; margin: 1%" name="date2">
     <input type="submit" class="btn" name="submit">

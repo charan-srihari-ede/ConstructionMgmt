@@ -121,6 +121,7 @@ if(isset($_POST['add_to_cart'])){
       <a href="view_page.php?pid=<?= $fetch_products['id']; ?>" class="fas fa-eye"></a>
       <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="" height="200px">
       <div class="name"><?= $fetch_products['name']; ?></div>
+      <div class="name">Available Stock:<?= $fetch_products['quantity']; ?></div>
       <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
       <input type="hidden" name="p_name" value="<?= $fetch_products['name']; ?>">
       <input type="hidden" name="p_price" value="<?= $fetch_products['price']; ?>">

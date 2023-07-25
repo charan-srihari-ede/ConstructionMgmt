@@ -138,6 +138,7 @@ if(isset($_GET['delete'])){
       <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="" height="200px">
       <div class="name"><?= $fetch_products['name']; ?></div>
       <div class="cat"><?= $fetch_products['category']; ?></div>
+      <div class="cat"><p>stock in hand: <?= $fetch_products['quantity']; ?><p></div>
       <div class="details"><?= $fetch_products['details']; ?></div>
       <div class="flex-btn">
          <a href="admin_update_product.php?update=<?= $fetch_products['id']; ?>" class="option-btn">update</a>

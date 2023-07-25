@@ -685,19 +685,21 @@
 }
 
 .placed-orders .box-container{
-   display: flex;
+   display: grid;
    flex-wrap: wrap;
    gap:1.5rem;
    align-items: flex-start;
+   grid-template-columns: repeat(2,1fr);
 }
 
 .placed-orders .box-container .box{
    padding:1rem 2rem;
-   flex:1 1 40rem;
+   /* flex:1 1 40rem; */
    border:var(--border);
    background-color: var(--white);
    box-shadow: var(--box-shadow);
    border-radius: .5rem;
+   height: 100%;
 }
 
 .placed-orders .box-container .box p{
