@@ -22,6 +22,11 @@ if(isset($_POST['update_product'])){
    $details = $_POST['details'];
    $details = filter_var($details, FILTER_SANITIZE_STRING);
 
+   $quantity_present = $_POST['quantity_present'];
+   $quantity_present = filter_var($quantity_present, FILTER_SANITIZE_STRING);
+   $quantity = $_POST['quantity'];
+   $quantity = filter_var($quantity, FILTER_SANITIZE_STRING);
+
    $image = $_FILES['image']['name'];
    $image = filter_var($image, FILTER_SANITIZE_STRING);
    $image_size = $_FILES['image']['size'];
@@ -29,8 +34,8 @@ if(isset($_POST['update_product'])){
    $image_folder = 'uploaded_img/'.$image;
    $old_image = $_POST['old_image'];
 
-   $update_product = $conn->prepare("UPDATE `products` SET name = ?, category = ?, details = ?, price = ? WHERE id = ?");
-   $update_product->execute([$name, $category, $details, $price, $pid]);
+   $update_product = $conn->prepare("UPDATE `products` SET name = ?, category = ?, quantity = ?, details = ?, price = ? WHERE id = ?");
+   $update_product->execute([$name, $category, $quantity+$quantity_present, $details, $price, $pid]);
 
    $message[] = 'product updated successfully!';
 
@@ -88,8 +93,11 @@ if(isset($_POST['update_product'])){
       <input type="hidden" name="old_image" value="<?= $fetch_products['image']; ?>">
       <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
       <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
+      <span><label>Quantity Available : </label></span>
+      <span><input type="number" name="quantity_present" min="0" readonly value="<?= $fetch_products['quantity']; ?>" class="box"></span>
       <input type="text" name="name" placeholder="enter product name" required class="box" value="<?= $fetch_products['name']; ?>">
       <input type="number" name="price" min="0" placeholder="enter product price" required class="box" value="<?= $fetch_products['price']; ?>">
+      <input type="number" name="quantity" min="0" placeholder="enter quantity to update" required class="box">
       <select name="category" class="box" required>
          <option selected><?= $fetch_products['category']; ?></option>
          <option value="vegitables">vegitables</option>
