@@ -29,6 +29,7 @@ if(isset($message)){
 
       <div class="icons">
          <div id="menu-btn" class="fas fa-bars"></div>
+         <a href="admin_search.php" class="fas fa-search" data-page="search"></a>
          <div id="user-btn" class="fas fa-user"></div>
       </div>
 

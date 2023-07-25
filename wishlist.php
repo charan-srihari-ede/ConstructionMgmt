@@ -22,7 +22,11 @@ if(isset($_POST['add_to_cart'])){
    $p_image = filter_var($p_image, FILTER_SANITIZE_STRING);
    $p_qty = $_POST['p_qty'];
    $p_qty = filter_var($p_qty, FILTER_SANITIZE_STRING);
-
+   $qty = $_POST['_qty'];
+   $qty=filter_var($qty, FILTER_SANITIZE_STRING);
+   if($qty<$p_qty){
+   $message[] = 'quantity exceeds availability!';}
+   else{
    $check_cart_numbers = $conn->prepare("SELECT * FROM `cart` WHERE name = ? AND user_id = ?");
    $check_cart_numbers->execute([$p_name, $user_id]);
 
@@ -42,6 +46,8 @@ if(isset($_POST['add_to_cart'])){
       $insert_cart->execute([$user_id, $pid, $p_name, $p_price, $p_qty, $p_image]);
       $message[] = 'added to cart!';
    }
+}
+
 
 }
 
@@ -94,14 +100,22 @@ if(isset($_GET['delete_all'])){
       $select_wishlist = $conn->prepare("SELECT * FROM `wishlist` WHERE user_id = ?");
       $select_wishlist->execute([$user_id]);
       if($select_wishlist->rowCount() > 0){
+         
          while($fetch_wishlist = $select_wishlist->fetch(PDO::FETCH_ASSOC)){ 
+            
    ?>
+   
    <form action="" method="POST" class="box">
       <a href="wishlist.php?delete=<?= $fetch_wishlist['id']; ?>" class="fas fa-times" onclick="return confirm('delete this from wishlist?');"></a>
       <a href="view_page.php?pid=<?= $fetch_wishlist['pid']; ?>" class="fas fa-eye"></a>
       <img src="uploaded_img/<?= $fetch_wishlist['image']; ?>" alt="" height="200px">
       <div class="name"><?= $fetch_wishlist['name']; ?></div>
+      <?php $select_products = $conn->prepare("SELECT * FROM `products` WHERE id=?");
+            $select_products->execute([$fetch_wishlist['pid']]);
+            $fetch_products = $select_products->fetch(PDO::FETCH_ASSOC);?>
+      <div class="name">Available Stock:<?php echo $fetch_products['quantity'] ?></div>
       <div class="price">Rs<?= $fetch_wishlist['price']; ?>/-</div>
+      <input type="hidden" name="_qty" value="<?= $fetch_products['quantity']; ?>">
       <input type="number" min="1" value="1" class="qty" name="p_qty">
       <input type="hidden" name="pid" value="<?= $fetch_wishlist['pid']; ?>">
       <input type="hidden" name="p_name" value="<?= $fetch_wishlist['name']; ?>">

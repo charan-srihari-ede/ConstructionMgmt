@@ -51,25 +51,33 @@ if(isset($_POST['add_to_cart'])){
    $p_image = filter_var($p_image, FILTER_SANITIZE_STRING);
    $p_qty = $_POST['p_qty'];
    $p_qty = filter_var($p_qty, FILTER_SANITIZE_STRING);
+   $product_quan=$conn->prepare("SELECT * FROM `products` WHERE id=?");
+   $product_quan->execute([$pid]);
+   $prod_quan=$product_quan->fetch(PDO::FETCH_ASSOC);
+   $prev_quan=$prod_quan['quantity'];
+   if($prev_quan<=$p_qty){
+      $message[] = 'quantity exceeds availability!';
+   }
+   else{
+      $check_cart_numbers = $conn->prepare("SELECT * FROM `cart` WHERE name = ? AND user_id = ?");
+      $check_cart_numbers->execute([$p_name, $user_id]);
 
-   $check_cart_numbers = $conn->prepare("SELECT * FROM `cart` WHERE name = ? AND user_id = ?");
-   $check_cart_numbers->execute([$p_name, $user_id]);
+      if($check_cart_numbers->rowCount() > 0){
+         $message[] = 'already added to cart!';
+      }else{
 
-   if($check_cart_numbers->rowCount() > 0){
-      $message[] = 'already added to cart!';
-   }else{
+         $check_wishlist_numbers = $conn->prepare("SELECT * FROM `wishlist` WHERE name = ? AND user_id = ?");
+         $check_wishlist_numbers->execute([$p_name, $user_id]);
 
-      $check_wishlist_numbers = $conn->prepare("SELECT * FROM `wishlist` WHERE name = ? AND user_id = ?");
-      $check_wishlist_numbers->execute([$p_name, $user_id]);
+         if($check_wishlist_numbers->rowCount() > 0){
+            $delete_wishlist = $conn->prepare("DELETE FROM `wishlist` WHERE name = ? AND user_id = ?");
+            $delete_wishlist->execute([$p_name, $user_id]);
+         }
 
-      if($check_wishlist_numbers->rowCount() > 0){
-         $delete_wishlist = $conn->prepare("DELETE FROM `wishlist` WHERE name = ? AND user_id = ?");
-         $delete_wishlist->execute([$p_name, $user_id]);
+         $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
+         $insert_cart->execute([$user_id, $pid, $p_name, $p_price, $p_qty, $p_image]);
+         $message[] = 'added to cart!';
       }
-
-      $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
-      $insert_cart->execute([$user_id, $pid, $p_name, $p_price, $p_qty, $p_image]);
-      $message[] = 'added to cart!';
    }
 
 }

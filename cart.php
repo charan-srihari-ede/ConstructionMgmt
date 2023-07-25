@@ -27,9 +27,16 @@ if(isset($_POST['update_qty'])){
    $cart_id = $_POST['cart_id'];
    $p_qty = $_POST['p_qty'];
    $p_qty = filter_var($p_qty, FILTER_SANITIZE_STRING);
-   $update_qty = $conn->prepare("UPDATE `cart` SET quantity = ? WHERE id = ?");
-   $update_qty->execute([$p_qty, $cart_id]);
-   $message[] = 'cart quantity updated';
+   $qty = $_POST['_qty'];
+   $qty=filter_var($qty, FILTER_SANITIZE_STRING);
+   if($qty<$p_qty){
+      $message[] = 'quantity exceeds availability!';
+   }
+   else{
+      $update_qty = $conn->prepare("UPDATE `cart` SET quantity = ? WHERE id = ?");
+      $update_qty->execute([$p_qty, $cart_id]);
+      $message[] = 'cart quantity updated';
+   }
 }
 
 ?>
@@ -71,7 +78,12 @@ if(isset($_POST['update_qty'])){
       <a href="view_page.php?pid=<?= $fetch_cart['pid']; ?>" class="fas fa-eye"></a>
       <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="" height="200px">
       <div class="name"><?= $fetch_cart['name']; ?></div>
+      <?php $select_products = $conn->prepare("SELECT * FROM `products` WHERE id=?");
+            $select_products->execute([$fetch_cart['pid']]);
+            $fetch_products = $select_products->fetch(PDO::FETCH_ASSOC);?>
+      <div class="name">Available Stock:<?php echo $fetch_products['quantity'] ?></div>
       <div class="price"><?= $fetch_cart['price']; ?>/-</div>
+      <input type="hidden" name="_qty" value="<?= $fetch_products['quantity']; ?>">
       <input type="hidden" name="cart_id" value="<?= $fetch_cart['id']; ?>">
       <div class="flex-btn">
          <input type="number" min="1" value="<?= $fetch_cart['quantity']; ?>" class="qty" name="p_qty">
