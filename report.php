@@ -47,7 +47,7 @@ $end_date = $_POST['date2'];
             // Access the data in the row
             // Example: $row["column_name"]
             // Replace "column_name" with the actual column names from your table
-            echo $row['user_id'].':'.$row['total_price'].'<br>';
+            echo $row['name'].':'.$row['total_price'].'<br>';
         }
     } else {
         echo "No records found between $start_date and $end_date";
