@@ -73,7 +73,7 @@ if(!isset($admin_id)){
       ?>
       <h3><?= $number_of_orders; ?></h3>
       <p>orders placed</p>
-      <a href="admin_orders.php" class="btn">see orders</a>
+      <a href="admin_orders_placed.php" class="btn">see orders</a>
       </div>
 
       <div class="box">

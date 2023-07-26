@@ -54,13 +54,12 @@ if(isset($_GET['delete'])){
 <section class="placed-orders">
 
    <h1 class="title">placed orders</h1>
-   
 
    <div class="box-container">
 
       <?php
-         $select_orders = $conn->prepare("SELECT * FROM `orders` where payment_status= ?");
-         $select_orders->execute(["completed"]);
+         $select_orders = $conn->prepare("SELECT * FROM `orders`");
+         $select_orders->execute();
          if($select_orders->rowCount() > 0){
             while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
       ?>
