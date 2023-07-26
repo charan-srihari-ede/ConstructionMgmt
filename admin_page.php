@@ -62,7 +62,7 @@ if(!isset($admin_id)){
       ?>
       <h3>Rs.<?= $total_completed; ?>/-</h3>
       <p>completed orders</p>
-      <a href="admin_orders.php" class="btn">see orders</a>
+      <a href="admin_orders_completed.php" class="btn">see orders</a>
       </div>
 
       <div class="box">

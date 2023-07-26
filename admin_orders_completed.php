@@ -59,7 +59,7 @@ if(isset($_GET['delete'])){
 
       <?php
          $select_orders = $conn->prepare("SELECT * FROM `orders` where payment_status= ?");
-         $select_orders->execute(["pending"]);
+         $select_orders->execute(["completed"]);
          if($select_orders->rowCount() > 0){
             while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
       ?>
