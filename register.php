@@ -31,6 +31,9 @@ if(isset($_POST['submit'])){
          $insert = $conn->prepare("INSERT INTO `users`(name, email, password, image) VALUES(?,?,?,?)");
          $insert->execute([$name, $email, $pass, $image]);
 
+         $query = $conn->prepare("INSERT INTO stock (name) values (?)");
+         $query->execute([$name]);
+
          if($insert){
             if($image_size > 2000000){
                $message[] = 'image size is too large!';
