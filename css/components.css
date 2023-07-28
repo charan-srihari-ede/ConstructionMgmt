@@ -484,13 +484,13 @@ section{
    
 }
 .header .flex .navbar a.active{
-   color:green;
+   color:var(--green);
    font: bolder;
    text-decoration-line: underline;
    font-weight: bolder;
 }
 .header .flex .icons a.active{
-   color:green;
+   color:var(--green);
    font: bolder;
 
    font-weight: bolder;
