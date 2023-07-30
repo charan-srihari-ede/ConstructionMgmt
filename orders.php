@@ -29,7 +29,19 @@ if(!isset($user_id)){
 </head>
 <body>
    
-<?php include 'header.php'; ?>
+<?php include 'header.php';
+
+if (isset($_SESSION['message'])) {
+   foreach ($_SESSION['message'] as $message) {
+       echo '
+       <div class="message">
+           <span>' . $message . '</span>
+           <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+       </div>
+       ';
+   }
+   unset($_SESSION['message']); // Clear the message after displaying it
+} ?>
 
 <section class="placed-orders">
 

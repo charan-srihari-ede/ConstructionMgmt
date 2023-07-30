@@ -101,7 +101,10 @@ if(isset($_POST['add_to_cart'])){
 </head>
 <body>
    
-<?php include 'header.php'; ?>
+<?php
+    include 'header.php';
+
+?>
 
 <section class="p-category">
 
