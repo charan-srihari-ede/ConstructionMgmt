@@ -30,9 +30,11 @@ if(isset($_POST['submit'])){
       }else{
          $insert = $conn->prepare("INSERT INTO `users`(name, email, password, image) VALUES(?,?,?,?)");
          $insert->execute([$name, $email, $pass, $image]);
-
-         $query = $conn->prepare("INSERT INTO stock (name) values (?)");
-         $query->execute([$name]);
+         $select=$conn->prepare("SELECT id FROM `users` WHERE name=? AND email=?");
+         $select->execute([$name,$email]);
+         $id=$select->fetchColumn();
+         $query = $conn->prepare("INSERT INTO stock (user_id) values (?)");
+         $query->execute([$id]);
 
          if($insert){
             if($image_size > 2000000){
