@@ -43,8 +43,8 @@ if(isset($message)){
          <a href="admin_update_profile.php" class="btn">update profile</a>
          <a href="logout.php" class="delete-btn">logout</a>
          <div class="flex-btn">
-            <a href="login.php" class="option-btn">login</a>
-            <a href="register.php" class="option-btn">register</a>
+            <!-- <a href="login.php" class="option-btn">login</a> -->
+            <a href="register.php" class="option-btn">register a New user </a>
          </div>
       </div>
 

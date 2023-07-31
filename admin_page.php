@@ -48,9 +48,21 @@ if(!isset($admin_id)){
       ?>
       <h3>Rs.<?= $total_pendings; ?>/-</h3>
       <p>total pendings</p>
-      <a href="admin_orders.php" class="btn">see orders</a>
+      <a href="admin_orders.php" class="btn">Requests Approval Panel</a>
       </div>
 
+      
+
+      <div class="box">
+      <?php
+         $select_orders = $conn->prepare("SELECT * FROM `orders`");
+         $select_orders->execute();
+         $number_of_orders = $select_orders->rowCount();
+      ?>
+      <h3><?= $number_of_orders; ?></h3>
+      <p>orders placed</p>
+      <a href="admin_orders_placed.php" class="btn">No.of Requests Raised</a>
+      </div>
       <div class="box">
       <?php
          $total_completed = 0;
@@ -61,21 +73,9 @@ if(!isset($admin_id)){
          };
       ?>
       <h3>Rs.<?= $total_completed; ?>/-</h3>
-      <p>completed orders</p>
-      <a href="admin_orders_completed.php" class="btn">see orders</a>
+      <p>Approved orders</p>
+      <a href="admin_orders_completed.php" class="btn">Request Approved </a>
       </div>
-
-      <div class="box">
-      <?php
-         $select_orders = $conn->prepare("SELECT * FROM `orders`");
-         $select_orders->execute();
-         $number_of_orders = $select_orders->rowCount();
-      ?>
-      <h3><?= $number_of_orders; ?></h3>
-      <p>orders placed</p>
-      <a href="admin_orders_placed.php" class="btn">see orders</a>
-      </div>
-
       <div class="box">
       <?php
          $select_products = $conn->prepare("SELECT * FROM `products`");
@@ -83,8 +83,8 @@ if(!isset($admin_id)){
          $number_of_products = $select_products->rowCount();
       ?>
       <h3><?= $number_of_products; ?></h3>
-      <p>products added</p>
-      <a href="admin_products.php" class="btn">see products</a>
+      <p> Add New products</p>
+      <a href="admin_products.php" class="btn">Products add Panel</a>
       </div>
 
       <!-- <div class="box">
@@ -115,9 +115,9 @@ if(!isset($admin_id)){
          $select_accounts->execute();
          $number_of_accounts = $select_accounts->rowCount();
       ?>
-      <h3><?= $number_of_accounts; ?></h3>
+      <h3><?= $number_of_accounts-1; ?></h3>
       <p>total accounts</p>
-      <a href="admin_users.php" class="btn">see accounts</a>
+      <a href="admin_users.php" class="btn">All users </a>
       </div>
 
       <div class="box">
@@ -127,8 +127,8 @@ if(!isset($admin_id)){
          $number_of_messages = $select_messages->rowCount();
       ?>
       <h3><?= $number_of_messages; ?></h3>
-      <p>total messages</p>
-      <a href="admin_contacts.php" class="btn">see messages</a>
+      <p>All Queries</p>
+      <a href="admin_contacts.php" class="btn">Query Requests</a>
       </div>
       <div class="box">
       <!-- <?php
@@ -137,11 +137,14 @@ if(!isset($admin_id)){
          $number_of_admins = $select_admins->rowCount();
       ?>
       <h3><?= $number_of_admins; ?></h3>
-      <p>total admins</p> -->
-      <h3>select range</h3>
+      <!-- <p>Orders Placed in range</p> -->
+
+      <h3> Orders Placed</h3><br><h4>select range</h4>
       <form method="POST" action="report.php">
-    <input type="date" max="<?= date('Y-m-d'); ?>" style="border: 2px solid black; padding: 1%; margin: 1%" name="date1" required><br>
-    <input type="date" max="<?= date('Y-m-d'); ?>" style="border: 2px solid black; padding: 1%; margin: 1%" name="date2" required >
+    <b>From date:</b><input type="date" max="<?= date('Y-m-d'); ?>" style="border: 2px solid black; padding: 1%; margin: 1%" name="date1" required>
+    <br>
+    <b>To date:</b><input type="date" max="<?= date('Y-m-d'); ?>" style="border: 2px solid black; padding: 1%; margin: 1%" name="date2" required >
+    <br>
     <input type="submit" class="btn" name="submit">
 </form>
 </div>

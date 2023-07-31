@@ -74,7 +74,7 @@ if(isset($_GET['delete'])){
          <p> total products : <span><?= $fetch_orders['total_products']; ?></span> </p>
          <p> total price : <span>Rs<?= $fetch_orders['total_price']; ?>/-</span> </p>
          <p> payment method : <span><?= $fetch_orders['method']; ?></span> </p>
-         <form action="" method="POST">
+         <!-- <form action="" method="POST">
             <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
             <select name="update_payment" class="drop-down">
                <option value="" selected disabled><?= $fetch_orders['payment_status']; ?></option>
@@ -85,7 +85,8 @@ if(isset($_GET['delete'])){
                <input type="submit" name="update_order" class="option-btn" value="update">
                <a href="admin_orders.php?delete=<?= $fetch_orders['id']; ?>" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
             </div>
-         </form>
+         </form> -->
+         <h1><center>COMPLETED</center></h1>
       </div>
       <?php
          }
