@@ -443,7 +443,7 @@ section{
       background-color: var(--white);
       position: absolute;
       top:99%; left:0; right:0;
-      transition: .2s linear;
+      transition: .1s linear;
       clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
    }
 

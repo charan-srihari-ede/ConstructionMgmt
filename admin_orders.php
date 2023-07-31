@@ -54,7 +54,7 @@ if (isset($_POST['update_order'])) {
             if ($stock_present->rowCount() > 0) {
                $s_p = $stock_present->fetchColumn(); // Fetch the actual column value directly
             }
-            echo $s_p;
+            
             //eswar
 
             if ($cart_query->execute([$s_p + $i1, $name])) {

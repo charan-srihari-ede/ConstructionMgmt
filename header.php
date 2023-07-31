@@ -27,6 +27,7 @@ if(isset($message)){
    <a href="home.php" data-page="home">home</a>
    <a href="shop.php" data-page="shop">shop</a>
    <a href="orders.php" data-page="orders">orders</a>
+   <a href="stock.php" data-page="stock">stock</a>
    <!-- <a href="about.php" data-page="about">about</a> -->
    <a href="contact.php" data-page="contact">contact</a>
 </nav>
