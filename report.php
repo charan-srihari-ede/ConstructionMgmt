@@ -76,12 +76,13 @@ $end_date = $_POST['date2'];
 
 </section>
 </div>
-<form>
-    <div align="center">
+<section class=show-products>
+<form class="box-container">
+    <div >
         <input type="button" class="delete-btn" value="Print" onclick="printContent()" />
         </div>
     </form>
-
+</section>
     <script>
         function printContent() {
             var content = document.getElementById('content');
