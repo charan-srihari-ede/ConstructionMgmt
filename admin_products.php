@@ -39,6 +39,18 @@ if (isset($_POST['add_product'])) {
       echo "Error executing ALTER statement: " . print_r($stmt->errorInfo(), true);
    }
 
+   $alterSql = "ALTER TABLE stock_used ADD COLUMN $column_name INT DEFAULT 0";
+
+   // Prepare and execute the ALTER statement
+   $stmt = $conn->prepare($alterSql);
+
+   if ($stmt->execute()) {
+      // echo "ALTER statement executed successfully.";
+   } else {
+      echo "Error executing ALTER statement: " . print_r($stmt->errorInfo(), true);
+   }
+
+
 
    //eswar
 

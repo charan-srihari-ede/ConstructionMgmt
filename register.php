@@ -45,6 +45,9 @@ if(isset($_POST['submit'])){
          $query = $conn->prepare("INSERT INTO stock (user_id) values (?)");
          $query->execute([$id]);
 
+         $query = $conn->prepare("INSERT INTO stock_used (user_id) values (?)");
+         $query->execute([$id]);
+
          if($insert){
             if($image_size > 2000000){
                $message[] = 'image size is too large!';

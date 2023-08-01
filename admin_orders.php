@@ -26,6 +26,8 @@ if (isset($_POST['update_order'])) {
       $f = 0;
       $f1 = 0;
 
+//, bricks ( 1 ), cement ( 3 )
+
       for ($i = 2; $i < strlen($s); $i++) {
          if ($s[$i - 2] == ',' && $s[$i - 1] == ' ') {
             for ($j = $i; $j < strlen($s); $j++) {
@@ -53,6 +55,8 @@ if (isset($_POST['update_order'])) {
 
             if ($stock_present->rowCount() > 0) {
                $s_p = $stock_present->fetchColumn(); // Fetch the actual column value directly
+            }else{
+               echo "error : 404";
             }
             
             //eswar
@@ -64,6 +68,7 @@ if (isset($_POST['update_order'])) {
             }
             $f = 0;
             $f1 = 0;
+            $s1="";
          }
       }
    }
