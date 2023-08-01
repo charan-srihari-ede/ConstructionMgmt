@@ -60,7 +60,7 @@ if(isset($_POST['send'])){
 
 <section class="contact">
 
-   <h1 class="title">get in touch</h1>
+   <h1 class="title">Contact Admin</h1>
 
    <form action="" method="POST">
       <input type="text" name="name" class="box" required placeholder="enter your name">

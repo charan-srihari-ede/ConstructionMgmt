@@ -48,7 +48,7 @@ if(!isset($admin_id)){
       ?>
       <h3>Rs.<?= $total_pendings; ?>/-</h3>
       <p>total pendings</p>
-      <a href="admin_orders.php" class="btn">Requests Approval Panel</a>
+      <a href="admin_orders.php" class="btn">Requests Approval</a>
       </div>
 
       
@@ -61,7 +61,7 @@ if(!isset($admin_id)){
       ?>
       <h3><?= $number_of_orders; ?></h3>
       <p>orders placed</p>
-      <a href="admin_orders_placed.php" class="btn">No.of Requests Raised</a>
+      <a href="admin_orders_placed.php" class="btn">Requests Raised</a>
       </div>
       <div class="box">
       <?php
@@ -139,11 +139,11 @@ if(!isset($admin_id)){
       <h3><?= $number_of_admins; ?></h3>
       <!-- <p>Orders Placed in range</p> -->
 
-      <h3> Orders Placed</h3><br><h4>select range</h4>
+      <h3> Orders Placed</h3><br><h2>select range</h2>
       <form method="POST" action="report.php">
     <b>From date:</b><input type="date" max="<?= date('Y-m-d'); ?>" style="border: 2px solid black; padding: 1%; margin: 1%" name="date1" required>
     <br>
-    <b>To date:</b><input type="date" max="<?= date('Y-m-d'); ?>" style="border: 2px solid black; padding: 1%; margin: 1%" name="date2" required >
+    <b>&emsp;To date : </b><input type="date" max="<?= date('Y-m-d'); ?>" style="border: 2px solid black; padding: 1%; margin: 1%" name="date2" required >
     <br>
     <input type="submit" class="btn" name="submit">
 </form>

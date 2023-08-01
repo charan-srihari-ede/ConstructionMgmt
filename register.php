@@ -2,6 +2,14 @@
 
 include 'config.php';
 
+session_start();
+
+$admin_id = $_SESSION['admin_id'];
+
+if(!isset($admin_id)){
+   header('location:login.php');
+};
+
 if(isset($_POST['submit'])){
 
    $name = $_POST['name'];
@@ -12,7 +20,8 @@ if(isset($_POST['submit'])){
    $pass = filter_var($pass, FILTER_SANITIZE_STRING);
    $cpass = md5($_POST['cpass']);
    $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
-
+   $user_type=$_POST['user-type'];
+   $user_type=filter_var($user_type,FILTER_SANITIZE_STRING);
    $image = $_FILES['image']['name'];
    $image = filter_var($image, FILTER_SANITIZE_STRING);
    $image_size = $_FILES['image']['size'];
@@ -28,8 +37,8 @@ if(isset($_POST['submit'])){
       if($pass != $cpass){
          $message[] = 'confirm password not matched!';
       }else{
-         $insert = $conn->prepare("INSERT INTO `users`(name, email, password, image) VALUES(?,?,?,?)");
-         $insert->execute([$name, $email, $pass, $image]);
+         $insert = $conn->prepare("INSERT INTO `users`(name, email, password, user_type, image) VALUES(?,?,?,?,?)");
+         $insert->execute([$name, $email, $pass, $user_type, $image]);
          $select=$conn->prepare("SELECT id FROM `users` WHERE name=? AND email=?");
          $select->execute([$name,$email]);
          $id=$select->fetchColumn();
@@ -42,7 +51,7 @@ if(isset($_POST['submit'])){
             }else{
                move_uploaded_file($image_tmp_name, $image_folder);
                $message[] = 'registered successfully!';
-               header('location:login.php');
+               header('location:admin_page.php');
             }
          }
 
@@ -93,9 +102,14 @@ if(isset($message)){
       <input type="email" name="email" class="box" placeholder="enter your email" required>
       <input type="password" name="pass" class="box" placeholder="enter your password" required>
       <input type="password" name="cpass" class="box" placeholder="confirm your password" required>
+      <select name="user-type" class="box" required>
+      <option value="" selected disabled>select user type</option>
+         <option value="admin">admin</option>
+         <option value="user">user</option>
+      </select>
       <input type="file" name="image" class="box" required accept="image/jpg, image/jpeg, image/png">
       <input type="submit" value="register now" class="btn" name="submit">
-      <p>already have an account? <a href="login.php">login now</a></p>
+      <!-- <p>already have an account? <a href="login.php">login now</a></p> -->
    </form>
 
 </section>
