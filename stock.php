@@ -47,21 +47,18 @@ if(!isset($user_id)){
     $stmt->execute();
     $columns = $stmt->fetchAll(PDO::FETCH_COLUMN);
     ?>
-    <div class='box-container'>
-    <div class="box">
+
     <center>
-        <table class="table">
+        <table class="table" border="1" align="center">
             <tr>
-                <th><h1>Products</h1></th>
-                <th><h1>Quantity Bought</h1></th>
-                <th><h1>Quantity Used</h1></th>
-                <th><h1>Update</th>
+                <th>Products</th>
+                <th>Quantity Bought</th>
             </tr>
             <?php
             // Display column names (excluding the first column)
             for ($i = 1; $i < count($columns); $i++) {
                 echo "<tr>";
-                echo "<td><h3>{$columns[$i]}</h3></td>";
+                echo "<td>{$columns[$i]}</td>";
 
                 $sql = $conn->prepare("SELECT {$columns[$i]} FROM stock WHERE user_id=?");
                 $sql->execute([$user_id]);
@@ -78,10 +75,6 @@ if(!isset($user_id)){
             ?>
         </table>
     </center>
-    </div>
-    </div>
-        </div>
-    </section>
                 <!-- <div class="box">
                   <p> Products : <span><?= $fetch_orders['user_id']; ?></span> </p>
                   <p> Quantity : <span><?= $fetch_orders['placed_on']; ?></span> </p>
