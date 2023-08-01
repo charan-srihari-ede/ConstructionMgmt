@@ -15,6 +15,9 @@ if(!isset($user_id)){
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<title>Stock</title>
+
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,33 +34,47 @@ if(!isset($user_id)){
    
 <?php include 'header.php'; ?>
 
-<section class="user-accounts">
 
-   <h1 class="title">user accounts</h1>
+   <h1 class="title">Stock</h1>
+   <?php
+    $table_name = "stock";
 
-   <div class="box-container">
+    // Retrieve column names from the table
+    $sql_columns = "SHOW COLUMNS FROM $table_name";
+    $stmt = $conn->prepare($sql_columns);
+    $stmt->execute();
+    $columns = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    ?>
 
-      <?php
-         $select_users = $conn->prepare("SELECT * FROM `stock`");
-         $select_users->execute();
-         while($fetch_users = $select_users->fetch(PDO::FETCH_ASSOC)){
-      ?>
-      <div class="box" style="<?php if($fetch_users['id'] == $admin_id){ echo 'display:none'; }; ?>">
-         <!-- <img src="uploaded_img/<?= $fetch_users['image']; ?>" alt=""> -->
-         <p> user id : <span><?= $fetch_users['id']; ?></span></p>
-         <p> cement : <span><?= $fetch_users['cement']; ?></span></p>
-         <p>rods : <span><?= $fetch_users['rods']; ?></span></p>
-         <!-- <p> user type : <span style=" color:<?php if($fetch_users['user_type'] == 'admin'){ echo 'orange'; }; ?>"><?= $fetch_users['user_type']; ?></span></p>
-         <a href="admin_users.php?delete=<?= $fetch_users['id']; ?>" onclick="return confirm('delete this user?');" class="delete-btn">delete</a> -->
-      </div>
-      <?php
-      }
-      ?>
-   </div>
+    <center>
+        <table class="table">
+            <tr>
+                <th>Products</th>
+                <th>Quantity Bought</th>
+            </tr>
+            <?php
+            // Display column names (excluding the first column)
+            for ($i = 1; $i < count($columns); $i++) {
+                echo "<tr>";
+                echo "<td>{$columns[$i]}</td>";
 
-</section>
+                $sql = $conn->prepare("SELECT {$columns[$i]} FROM stock WHERE user_id=?");
+                $sql->execute([$user_id]);
+                $quantity_bought = $sql->fetchColumn();
+                
+                echo "<td>{$quantity_bought}</td>";
+                echo "</tr>";
+            }
+            ?>
+        </table>
+    </center>
+                <!-- <div class="box">
+                  <p> Products : <span><?= $fetch_orders['user_id']; ?></span> </p>
+                  <p> Quantity : <span><?= $fetch_orders['placed_on']; ?></span> </p>
+                 </div> -->
 
 <script src="script.js"></script>
 
 </body>
 </html>
+

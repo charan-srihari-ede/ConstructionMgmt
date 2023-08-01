@@ -20,7 +20,7 @@ if (isset($_POST['update_order'])) {
 
    if ($update_payment == 'completed') {
       $s = $_POST['total_products'];
-      $name = $_POST['name'];
+      $user_id = $_POST['user_id'];
       $s1 = "";
       $i1 = 0;
       $f = 0;
@@ -43,13 +43,13 @@ if (isset($_POST['update_order'])) {
 
          if ($f && $f1) {
             $column_name = trim($s1); // Trim any leading/trailing spaces from $s1
-            $cart_query = $conn->prepare("UPDATE `stock` SET $column_name = ? WHERE name = ?");
+            $cart_query = $conn->prepare("UPDATE `stock` SET $column_name = ? WHERE user_id = ?");
 
             //eswar
             $s_p = 0;
-            $sql = "SELECT $column_name FROM `stock` WHERE name = ?";
+            $sql = "SELECT $column_name FROM `stock` WHERE user_id = ?";
             $stock_present = $conn->prepare($sql);
-            $stock_present->execute([$name]);
+            $stock_present->execute([$user_id]);
 
             if ($stock_present->rowCount() > 0) {
                $s_p = $stock_present->fetchColumn(); // Fetch the actual column value directly
@@ -57,7 +57,7 @@ if (isset($_POST['update_order'])) {
             
             //eswar
 
-            if ($cart_query->execute([$s_p + $i1, $name])) {
+            if ($cart_query->execute([$s_p + $i1, $user_id])) {
                //echo "Database has been updated successfully";
             } else {
                echo "Error updating database: ";
@@ -124,7 +124,7 @@ if (isset($_GET['delete'])) {
                   <p> payment method : <span><?= $fetch_orders['method']; ?></span> </p>
                   <form action="" method="POST">
                      <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
-                     <input type="hidden" name="name" value="<?= $fetch_orders['name']; ?>">
+                     <input type="hidden" name="user_id" value="<?= $fetch_orders['user_id']; ?>">
                      <input type="hidden" name="total_products" value="<?= $fetch_orders['total_products']; ?>">
                      <select name="update_payment" class="drop-down">
                         <option value="" selected disabled><?= $fetch_orders['payment_status']; ?></option>

@@ -3,11 +3,12 @@
 @include 'config.php';
 
 session_start();
+
+$user_id = $_SESSION['user_id'];
+
 if(!isset($user_id)){
    header('location:login.php');
 };
-$user_id = $_SESSION['user_id'];
-
 
 if(isset($_POST['order'])){
 
@@ -19,7 +20,7 @@ if(isset($_POST['order'])){
    $email = filter_var($email, FILTER_SANITIZE_STRING);
    $method = $_POST['method'];
    $method = filter_var($method, FILTER_SANITIZE_STRING);
-   $address = 'flat no. '. $_POST['flat'] .', '. $_POST['street'] .', '. $_POST['city'] .', '. $_POST['state'] .', '. $_POST['country'] .' - '. $_POST['pin_code'];
+   $address = 'flat no. '. $_POST['flat'] .','. $_POST['street'] .','. $_POST['city'] .','. $_POST['state'] .','. $_POST['country'] .' - '. $_POST['pin_code'];
    $address = filter_var($address, FILTER_SANITIZE_STRING);
    $placed_on = date('Y-m-d');
 
@@ -43,6 +44,8 @@ if(isset($_POST['order'])){
 
    if($cart_total == 0){
       $message[] = 'your cart is empty';
+   }elseif($order_query->rowCount() > 0){
+      $message[] = 'order placed already!';
    }else
    {
          $cart_query = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
@@ -66,9 +69,6 @@ if(isset($_POST['order'])){
          $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
          $delete_cart->execute([$user_id]);
          $message[] = 'order placed successfully!';
-         session_start();
-         $_SESSION['message'] = $message;
-         header('location:orders.php');
    }
 
 }
@@ -129,7 +129,7 @@ if(isset($_POST['order'])){
          </div>
          <div class="inputBox">
             <span>your number :</span>
-            <input type="phone" name="number" placeholder="enter your number" class="box" required>
+            <input type="number" name="number" placeholder="enter your number" class="box" required>
          </div>
          <div class="inputBox">
             <span>your email :</span>
@@ -139,9 +139,9 @@ if(isset($_POST['order'])){
             <span>payment method :</span>
             <select name="method" class="box" required>
                <option value="cash on delivery">cash on delivery</option>
-               <option value="credit card">credit card</option>
+               <!-- <option value="credit card">credit card</option>
                <option value="paytm">paytm</option>
-               <option value="paypal">paypal</option>
+               <option value="paypal">paypal</option> -->
             </select>
          </div>
          <div class="inputBox">
@@ -149,8 +149,8 @@ if(isset($_POST['order'])){
             <input type="text" name="flat" placeholder="e.g. flat number" class="box" required>
          </div>
          <div class="inputBox">
-            <span>address line 02 :</span>
-            <input type="text" name="street" placeholder="e.g. street name" class="box" required>
+            <span>Institution:</span>
+            <input type="text" name="street" value="VIGNAN GROUPS" class="box" required>
          </div>
          <div class="inputBox">
             <span>city :</span>
